@@ -1209,6 +1209,19 @@ class Html extends PHPExcel_Reader_HTML {
                 $cells->getAlignment()->setWrapText($wrap);
 
                 break;
+
+            case 'transform':
+
+                $matches = [];
+
+                if (preg_match('/^rotate\((-?[0-9]+)deg\)$/', $value, $matches))
+                {
+                    $degrees = $matches[1];
+
+                    $cells->getAlignment()->setTextRotation($degrees);
+                }
+
+                break;
         }
     }
 
